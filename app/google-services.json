@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "526542142890",
+    "project_id": "apuestas-firebase",
+    "storage_bucket": "apuestas-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526542142890:android:f6f35c6c614720fd5b7fd3",
+        "android_client_info": {
+          "package_name": "com.example.apuestasfutbol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526542142890-49qr8h09vu9niiodl1tfv27d6udlt2jc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzIGb5pzbGKCqPmJAWI7RdT0I9pFYRBGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526542142890-49qr8h09vu9niiodl1tfv27d6udlt2jc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
