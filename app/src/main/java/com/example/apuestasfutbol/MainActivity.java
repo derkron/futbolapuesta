@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     EditText jetcodigo,jetnombre,jetciudad;
     RadioButton jrbprofesional,jrbascenso,jrbaficionado;
     CheckBox jcbactivo;
-    String codigo,nombre,ciudad;
+    String codigo,nombre,ciudad,categoria,activo;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
@@ -51,24 +51,36 @@ public class MainActivity extends AppCompatActivity {
             jetcodigo.requestFocus();
         }
         else{
+            if(jrbprofesional.isChecked())
+                categoria="Profesional";
+            else
+                if (jrbascenso.isChecked())
+                    categoria="Ascenso";
+                else
+                    categoria="Aficionado";
             // Create a new user with a first and last name
-            Map<String, Object> user = new HashMap<>();
-            user.put("first", "Ada");
-            user.put("last", "Lovelace");
-            user.put("born", 1815);
+            Map<String, Object> equipo = new HashMap<>();
+            equipo.put("Codigo", codigo);
+            equipo.put("Nombre", nombre);
+            equipo.put("Ciudad", ciudad);
+            equipo.put("Categoria", categoria);
+            equipo.put("Activo", "No");
 
 // Add a new document with a generated ID
-            db.collection("users")
-                    .add(user)
+            db.collection("Campeonato")
+                    .add(equipo)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                           //  Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            Toast.makeText(MainActivity.this, "Documento adicionado", Toast.LENGTH_SHORT).show();
+                            Limpiar_campos();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this, "Error adicionando documento", Toast.LENGTH_SHORT).show();
                           //  Log.w(TAG, "Error adding document", e);
                         }
                     });
@@ -76,5 +88,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    private void Limpiar_campos(){
+        jetcodigo.setText("");
+        jetnombre.setText("");
+        jetciudad.setText("");
+        jrbprofesional.setChecked(true);
+        jcbactivo.setChecked(false);
+        jetcodigo.requestFocus();
     }
 }
